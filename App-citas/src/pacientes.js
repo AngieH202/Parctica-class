@@ -70,10 +70,10 @@ export function editarPaciente(pacientes, id, cambios) {
  * @returns {boolean} true si se eliminó, false si no se encontró.
  */
 export function eliminarPaciente(pacientes, id) {
-  const indice = pacientes.findIndex((p) => p.id === id);
-  if (indice === -1) {
+  if (!buscarPorId(pacientes, id)) {
     return false;
   }
+  const indice = pacientes.findIndex((p) => p.id === id);
   pacientes.splice(indice, 1);
   return true;
 }
