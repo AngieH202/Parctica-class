@@ -1,7 +1,5 @@
 // Módulo de lógica de negocio para pacientes.
 
-// Módulo de lógica de negocio para pacientes.
-
 /**
  * Genera un identificador único simple.
  * @returns {string} Un id único.
@@ -37,4 +35,20 @@ export function registrarPaciente(pacientes, datos) {
   const paciente = crearPaciente(datos);
   pacientes.push(paciente);
   return paciente;
+}
+
+/**
+ * Edita los datos de un paciente existente por su id.
+ * @param {Array} pacientes - Lista de pacientes.
+ * @param {string} id - Id del paciente a editar.
+ * @param {Object} cambios - Campos a actualizar.
+ * @returns {boolean} true si se editó, false si no se encontró.
+ */
+export function editarPaciente(pacientes, id, cambios) {
+  const paciente = pacientes.find((p) => p.id === id);
+  if (!paciente) {
+    return false;
+  }
+  Object.assign(paciente, cambios);
+  return true;
 }
