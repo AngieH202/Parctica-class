@@ -38,6 +38,16 @@ export function registrarPaciente(pacientes, datos) {
 }
 
 /**
+ * Busca un paciente por su id.
+ * @param {Array} pacientes - Lista de pacientes.
+ * @param {string} id - Id del paciente.
+ * @returns {Object|undefined} El paciente encontrado o undefined.
+ */
+function buscarPorId(pacientes, id) {
+  return pacientes.find((p) => p.id === id);
+}
+
+/**
  * Edita los datos de un paciente existente por su id.
  * @param {Array} pacientes - Lista de pacientes.
  * @param {string} id - Id del paciente a editar.
@@ -45,7 +55,7 @@ export function registrarPaciente(pacientes, datos) {
  * @returns {boolean} true si se editó, false si no se encontró.
  */
 export function editarPaciente(pacientes, id, cambios) {
-  const paciente = pacientes.find((p) => p.id === id);
+  const paciente = buscarPorId(pacientes, id);
   if (!paciente) {
     return false;
   }
