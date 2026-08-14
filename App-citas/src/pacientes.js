@@ -62,3 +62,18 @@ export function editarPaciente(pacientes, id, cambios) {
   Object.assign(paciente, cambios);
   return true;
 }
+
+/**
+ * Elimina un paciente existente por su id.
+ * @param {Array} pacientes - Lista de pacientes.
+ * @param {string} id - Id del paciente a eliminar.
+ * @returns {boolean} true si se eliminó, false si no se encontró.
+ */
+export function eliminarPaciente(pacientes, id) {
+  const indice = pacientes.findIndex((p) => p.id === id);
+  if (indice === -1) {
+    return false;
+  }
+  pacientes.splice(indice, 1);
+  return true;
+}
