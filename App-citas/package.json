@@ -1,0 +1,13 @@
+{
+  "name": "app-citas",
+  "version": "1.0.0",
+  "description": "App de citas médicas (HTML standalone) con lógica de negocio testeada con TDD",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.9"
+  }
+}
