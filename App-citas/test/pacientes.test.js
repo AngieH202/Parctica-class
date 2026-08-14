@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { registrarPaciente, editarPaciente } from '../src/pacientes.js';
+import { registrarPaciente, editarPaciente, eliminarPaciente } from '../src/pacientes.js';
 
 describe('RF-01: Registrar un paciente', () => {
   it('agrega un paciente nuevo a la lista y devuelve el paciente creado', () => {
@@ -75,5 +75,35 @@ describe('RF-02: Editar un paciente', () => {
     // Assert
     expect(resultado).toBe(false);
     expect(pacientes[0].nombre).toBe('Juan');
+  });
+});
+
+describe('RF-03: Eliminar un paciente', () => {
+  it('elimina un paciente existente por su id', () => {
+    // Arrange
+    const pacientes = [
+      { id: 'p1', nombre: 'Juan Pérez' },
+      { id: 'p2', nombre: 'María López' },
+    ];
+
+    // Act
+    const resultado = eliminarPaciente(pacientes, 'p1');
+
+    // Assert
+    expect(resultado).toBe(true);
+    expect(pacientes).toHaveLength(1);
+    expect(pacientes[0].id).toBe('p2');
+  });
+
+  it('devuelve false si el paciente no existe y no modifica la lista', () => {
+    // Arrange
+    const pacientes = [{ id: 'p1', nombre: 'Juan Pérez' }];
+
+    // Act
+    const resultado = eliminarPaciente(pacientes, 'no-existe');
+
+    // Assert
+    expect(resultado).toBe(false);
+    expect(pacientes).toHaveLength(1);
   });
 });
