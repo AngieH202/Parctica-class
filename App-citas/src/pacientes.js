@@ -1,5 +1,12 @@
 // Módulo de lógica de negocio para pacientes.
-// Esta implementación se completará en pasos TDD posteriores.
+
+/**
+ * Genera un identificador único simple.
+ * @returns {string} Un id único.
+ */
+function generarId() {
+  return crypto.randomUUID();
+}
 
 /**
  * Registra un nuevo paciente.
@@ -8,6 +15,15 @@
  * @returns {Object} El paciente creado.
  */
 export function registrarPaciente(pacientes, datos) {
-  // TODO: implementar en el paso TDD
-  throw new Error('No implementado');
+  const paciente = {
+    id: generarId(),
+    nombre: datos.nombre,
+    fechaNacimiento: datos.fechaNacimiento,
+    telefono: datos.telefono,
+    correo: datos.correo,
+    observaciones: datos.observaciones,
+    creadoEn: new Date().toISOString(),
+  };
+  pacientes.push(paciente);
+  return paciente;
 }
